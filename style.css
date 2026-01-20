@@ -1,0 +1,360 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap');
+
+:root {
+  --primary-color: #2F4F4F; /* Dark Slate Gray */
+  --secondary-color: #5F9EA0; /* Cadet Blue */
+  --accent-color: #E0FFFF; /* Light Cyan */
+  --highlight-color: #E74C3C; /* Warning Red for risks */
+  --text-dark: #333;
+  --text-light: #f8f9fa;
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  color: var(--text-dark);
+  background: #f0f4f8;
+  line-height: 1.6;
+}
+
+/* Nav Bar */
+.glass-nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1rem 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--glass-border);
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.glass-nav .logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.nav-links a:hover {
+  color: var(--accent-color);
+}
+
+/* Hero Section */
+.hero {
+  height: 100vh;
+  background: url('images/hero.png') no-repeat center center/cover;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.35); /* Slightly darker overlay for text readability */
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 2rem;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+}
+
+.hero p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  text-decoration: none;
+  border: 1px solid white;
+  border-radius: 30px;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background: white;
+  color: var(--primary-color);
+  transform: translateY(-3px);
+}
+
+/* Sections */
+.section {
+  padding: 5rem 10%;
+  text-align: center;
+}
+
+.section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: var(--primary-color);
+}
+
+.section.dark {
+  background: #eef2f5;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 3rem;
+  margin-top: -1rem;
+}
+
+/* Carousel */
+.carousel {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto 3rem auto;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.carousel-inner {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+  min-width: 100%;
+  position: relative;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  display: block;
+}
+
+.carousel-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  text-align: center;
+  backdrop-filter: blur(4px);
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s;
+  z-index: 10;
+}
+
+.carousel-control:hover {
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--primary-color);
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* Cards (Impacts) */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.card {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card .icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.card h3 {
+  font-family: 'Playfair Display', serif;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+/* Gallery Grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  background: white;
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 300px; /* Fixed height for consistency */
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-item .caption {
+  padding: 1rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--primary-color);
+  background: white;
+  text-align: center;
+}
+
+/* Action List */
+.action-list {
+  list-style: none;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.action-list li {
+  background: white;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.action-list li:hover {
+  transform: translateX(10px);
+  background: #f8fff9;
+}
+
+/* Footer */
+footer {
+  background: var(--primary-color);
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.9rem;
+}
+
+/* Animations */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1.5s ease forwards;
+}
+
+.delay {
+  animation-delay: 0.5s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media(max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .nav-links {
+    display: none;
+  }
+  
+  .section {
+    padding: 3rem 5%;
+  }
+  
+  .carousel-item img {
+    height: 300px;
+  }
+}
