@@ -1,8 +1,11 @@
 let currentSlide = 0;
 const slides = document.querySelectorAll(".carousel-item");
+const dots = document.querySelectorAll(".dot");
 const totalSlides = slides.length;
+let slideInterval;
 
 function showSlide(index) {
+  // Handle wrapping
   if (index >= totalSlides) {
     currentSlide = 0;
   } else if (index < 0) {
@@ -11,18 +14,42 @@ function showSlide(index) {
     currentSlide = index;
   }
 
+  // Update Carousel Position
   const carouselInner = document.querySelector(".carousel-inner");
   carouselInner.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+  // Update Dots
+  dots.forEach((dot, i) => {
+    dot.classList.toggle("active", i === currentSlide);
+  });
+
+  // Update Active Class on Slides
+  slides.forEach((slide, i) => {
+    slide.classList.toggle("active", i === currentSlide);
+  });
 }
 
 function moveSlide(direction) {
   showSlide(currentSlide + direction);
+  resetTimer();
 }
 
-// Auto-slide every 5 seconds
-setInterval(() => {
-  moveSlide(1);
-}, 5000);
+function currentSlideTo(index) {
+  showSlide(index);
+  resetTimer();
+}
 
-// Initial call to set up
+function startTimer() {
+  slideInterval = setInterval(() => {
+    showSlide(currentSlide + 1);
+  }, 5000);
+}
+
+function resetTimer() {
+  clearInterval(slideInterval);
+  startTimer();
+}
+
+// Initial setup
 showSlide(currentSlide);
+startTimer();
